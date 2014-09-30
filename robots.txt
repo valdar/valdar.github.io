@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://valdar.github.io/sitemap.xml 
