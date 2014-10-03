@@ -4,13 +4,22 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://valdar.github.io/atom.xml" rel="self"/>
   <link href="http://valdar.github.io/"/>
-  <updated>2014-10-02T23:39:29+01:00</updated>
+  <updated>2014-10-04T00:30:01+01:00</updated>
   <id>http://valdar.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Andrea Tarocchi]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[I Might ...]]></title>
+    <link href="http://valdar.github.io/blog/2014/10/03/i-might-dot-dot-dot/"/>
+    <updated>2014-10-03T08:31:35+01:00</updated>
+    <id>http://valdar.github.io/blog/2014/10/03/i-might-dot-dot-dot</id>
+    <content type="html"><![CDATA[<p>&hellip; write here someday!</p>
+]]></content>
+  </entry>
   
 </feed>
