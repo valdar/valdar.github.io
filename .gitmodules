@@ -1,0 +1,6 @@
+[submodule ".themes/fabric"]
+	path = .themes/fabric
+	url = https://github.com/panks/fabric
+[submodule ".themes/oct2"]
+	path = .themes/oct2
+	url = https://github.com/bijumon/oct2
