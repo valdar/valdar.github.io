@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Valdar&#39;s Blog</title>
-    <link>http://blog.valdar.it/</link>
+    <link>https://blog.valdar.it/</link>
     <description>Recent content on Valdar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 11 Oct 2018 12:08:20 +0200</lastBuildDate>
     
-	<atom:link href="http://blog.valdar.it/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.valdar.it/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Use Groovy to customize the Maven build process</title>
-      <link>http://blog.valdar.it/2018/10/groovy-customize-maven/</link>
+      <link>https://blog.valdar.it/2018/10/groovy-customize-maven/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
       
-      <guid>http://blog.valdar.it/2018/10/groovy-customize-maven/</guid>
+      <guid>https://blog.valdar.it/2018/10/groovy-customize-maven/</guid>
       <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
  Apache Maven is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a pom.xml file to centrally manage a project&amp;rsquo;s build and its dependencies. If you have worked anywhere near to the Java ecosystem chances are that, for the good or for the bad, you have come across the use of this tool.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>http://blog.valdar.it/about/</link>
+      <link>https://blog.valdar.it/about/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.valdar.it/about/</guid>
+      <guid>https://blog.valdar.it/about/</guid>
       <description>Andrea Tarocchi (a.k.a. Valdar) is an open source enthusiast since 2000, computer passionate since 8 years old (C64 and LOGO anyone?).
 After his graduation won a research grant on Application Integration, he worked in Healthcare industry, mostly solving integration problems with Apache camel, then moved to Red Hat through a number of roles: currently a Senior Software Engineer.
 Been lucky to work with and contribute to some great open source project, like Apache Camel and Drools to mention a few.</description>

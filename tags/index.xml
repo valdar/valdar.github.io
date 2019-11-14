@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Valdar&#39;s Blog</title>
-    <link>http://blog.valdar.it/tags/</link>
+    <link>https://blog.valdar.it/tags/</link>
     <description>Recent content in Tags on Valdar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 11 Oct 2018 12:08:20 +0200</lastBuildDate>
     
-	<atom:link href="http://blog.valdar.it/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.valdar.it/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Groovy</title>
-      <link>http://blog.valdar.it/tags/groovy/</link>
+      <link>https://blog.valdar.it/tags/groovy/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
       
-      <guid>http://blog.valdar.it/tags/groovy/</guid>
+      <guid>https://blog.valdar.it/tags/groovy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maven</title>
-      <link>http://blog.valdar.it/tags/maven/</link>
+      <link>https://blog.valdar.it/tags/maven/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
       
-      <guid>http://blog.valdar.it/tags/maven/</guid>
+      <guid>https://blog.valdar.it/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Syndesis</title>
-      <link>http://blog.valdar.it/tags/syndesis/</link>
+      <link>https://blog.valdar.it/tags/syndesis/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
       
-      <guid>http://blog.valdar.it/tags/syndesis/</guid>
+      <guid>https://blog.valdar.it/tags/syndesis/</guid>
       <description></description>
     </item>
     

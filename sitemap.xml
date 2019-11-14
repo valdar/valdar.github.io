@@ -3,52 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://blog.valdar.it/2018/10/groovy-customize-maven/</loc>
+    <loc>https://blog.valdar.it/2018/10/groovy-customize-maven/</loc>
     <lastmod>2018-10-11T12:08:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/about/</loc>
+    <loc>https://blog.valdar.it/about/</loc>
     <lastmod>2018-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/categories/</loc>
+    <loc>https://blog.valdar.it/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/tags/groovy/</loc>
+    <loc>https://blog.valdar.it/tags/groovy/</loc>
     <lastmod>2018-10-11T12:08:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/tags/maven/</loc>
+    <loc>https://blog.valdar.it/tags/maven/</loc>
     <lastmod>2018-10-11T12:08:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/posts/</loc>
+    <loc>https://blog.valdar.it/posts/</loc>
     <lastmod>2018-10-11T12:08:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/tags/syndesis/</loc>
+    <loc>https://blog.valdar.it/tags/syndesis/</loc>
     <lastmod>2018-10-11T12:08:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/tags/</loc>
+    <loc>https://blog.valdar.it/tags/</loc>
     <lastmod>2018-10-11T12:08:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.valdar.it/</loc>
+    <loc>https://blog.valdar.it/</loc>
     <lastmod>2018-10-11T12:08:20+02:00</lastmod>
     <priority>0</priority>
   </url>
