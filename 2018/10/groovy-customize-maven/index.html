@@ -201,11 +201,11 @@
 </blockquote>
 
 
-<p><a href="&quot;https://maven.apache.org">Apache Maven</a> is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a <code>pom.xml</code> file to centrally manage a project&rsquo;s build and its dependencies. If you have worked anywhere near to the <a href="&quot;https://developers.redhat.com/blog/category/java/">Java ecosystem</a> chances are that, for the good or for the bad, you have come across the use of this tool.</p>
+<p><a href="https://maven.apache.org">Apache Maven</a> is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a <code>pom.xml</code> file to centrally manage a project&rsquo;s build and its dependencies. If you have worked anywhere near to the <a href="https://developers.redhat.com/blog/category/java/">Java ecosystem</a> chances are that, for the good or for the bad, you have come across the use of this tool.</p>
 
-<p>Maven plugins are used to enhance and customize the Maven build process; while the <a href="&quot;https://maven.apache.org/plugins/">list of existing plugins</a> is quite extensive, it is common to need to implement some small changes or tweak the build just a bit, which makes writing a whole plugin feel like overkill.</p>
+<p>Maven plugins are used to enhance and customize the Maven build process; while the <a href="https://maven.apache.org/plugins/">list of existing plugins</a> is quite extensive, it is common to need to implement some small changes or tweak the build just a bit, which makes writing a whole plugin feel like overkill.</p>
 
-<p>This post describes a possible solution: the <a href="&quot;https://github.com/groovy/GMavenPlus">GMaven Plus plugin</a>.</p>
+<p>This post describes a possible solution: the <a href="https://github.com/groovy/GMavenPlus">GMaven Plus plugin</a>.</p>
 
 <p>GMaven Plus is a Maven plugin for managing Groovy projects with Maven. Among other features, it has an execute script goal that can be configured easily, as shown in the following snippet:</p>
 
@@ -247,13 +247,13 @@
 &lt;/build&gt;
 </code></pre>
 
-<p>The execution of the Groovy script can be bound to any Maven phase; furthermore, inside the script, the objects <code>session</code> and <code>project</code> can be used to interact with the Maven build. For instance, the project name can be logged with <code>log.info &quot;$project.name&quot;</code>. (There are other useful Maven objects available to be used in the Groovy script along with other useful goodies like using <code>@Grab</code> to download external dependencies your script might have; check the <a href="&quot;https://github.com/groovy/GMavenPlus/wiki/Examples#execute-scripts">examples</a>). Due to the combination of these two capabilities, it is quite easy to extend the Maven build process directly with an inline Groovy script placed directly in the <code>pom.xml</code> file, as shown above.</p>
+<p>The execution of the Groovy script can be bound to any Maven phase; furthermore, inside the script, the objects <code>session</code> and <code>project</code> can be used to interact with the Maven build. For instance, the project name can be logged with <code>log.info &quot;$project.name&quot;</code>. (There are other useful Maven objects available to be used in the Groovy script along with other useful goodies like using <code>@Grab</code> to download external dependencies your script might have; check the <a href="https://github.com/groovy/GMavenPlus/wiki/Examples#execute-scripts">examples</a>). Due to the combination of these two capabilities, it is quite easy to extend the Maven build process directly with an inline Groovy script placed directly in the <code>pom.xml</code> file, as shown above.</p>
 
 <h2 id="a-real-world-example">A real-world example</h2>
 
-<p>Instead of using a fictional example to showcase how to use the GMaven Plus plugin for our purposes, I think it would be beneficial to look at a real-world example. The example is taken from the <a href="&quot;https://syndesis.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener">Syndesis</a> project.</p>
+<p>Instead of using a fictional example to showcase how to use the GMaven Plus plugin for our purposes, I think it would be beneficial to look at a real-world example. The example is taken from the <a href="https://syndesis.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener">Syndesis</a> project.</p>
 
-<p>Syndesis is an integration Platform-as-a-Service (iPaaS) that aims to simplify collaboration between business users, integration experts, and application developers. It is a cloud-native toolchain and runtime, available right from your browser. It is an open source project on which <a href="&quot;https://developers.redhat.com/products/fuse/overview/">Red Hat Fuse Online</a> is based.
+<p>Syndesis is an integration Platform-as-a-Service (iPaaS) that aims to simplify collaboration between business users, integration experts, and application developers. It is a cloud-native toolchain and runtime, available right from your browser. It is an open source project on which <a href="https://developers.redhat.com/products/fuse/overview/">Red Hat Fuse Online</a> is based.
 
   
 
@@ -331,11 +331,11 @@
 
 </p>
 
-<p>The platform is extensible through extensions to cover less-standard and more-particular cases (some extensions are collected in their own <a href="&quot;https://github.com/syndesisio/syndesis-extensions">GitHub repository</a>). Usually, it is a developer that takes care of creating such an extension and building it. In order to do so, the extensions must be built against the version of the Syndesis platform on which they will be loaded. Manually retrieving and setting the Syndesis version in the syndesis-extension project is a tedious and error-prone activity. It would be much better if you could pass the Syndesis platform URL to the build process and Maven would automatically get the right version and use it.</p>
+<p>The platform is extensible through extensions to cover less-standard and more-particular cases (some extensions are collected in their own <a href="https://github.com/syndesisio/syndesis-extensions">GitHub repository</a>). Usually, it is a developer that takes care of creating such an extension and building it. In order to do so, the extensions must be built against the version of the Syndesis platform on which they will be loaded. Manually retrieving and setting the Syndesis version in the syndesis-extension project is a tedious and error-prone activity. It would be much better if you could pass the Syndesis platform URL to the build process and Maven would automatically get the right version and use it.</p>
 
 <h2 id="solution-explained">Solution explained</h2>
 
-<p>The Groovy script in <a href="&quot;https://github.com/syndesisio/syndesis-extensions/blob/af61fb81c74ce02cc4cd63451eca4620e8718c46/pom.xml#L114-L180">syndesis-extension project pom.xml</a> implements the following logic: the URL is passed in a property named <code>syndesisServerUrl</code> that is used to dynamically retrieve the Syndesis version and set it as <code>syndesis.version</code> in the Maven project. If no URL is provided, Maven will fall back to using the <code>syndesis.version</code> present in the <code>pom.xml</code> file.</p>
+<p>The Groovy script in <a href="https://github.com/syndesisio/syndesis-extensions/blob/af61fb81c74ce02cc4cd63451eca4620e8718c46/pom.xml#L114-L180">syndesis-extension project pom.xml</a> implements the following logic: the URL is passed in a property named <code>syndesisServerUrl</code> that is used to dynamically retrieve the Syndesis version and set it as <code>syndesis.version</code> in the Maven project. If no URL is provided, Maven will fall back to using the <code>syndesis.version</code> present in the <code>pom.xml</code> file.</p>
 
 <p>The relevant part of the <code>pom.xml</code> file is shown below:</p>
 
