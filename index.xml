@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Valdar&#39;s Blog</title>
@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 11 Oct 2018 12:08:20 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 Nov 2019 22:56:53 +0100</lastBuildDate>
     
 	<atom:link href="https://blog.valdar.it/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Skupper.io: let your services communicate across Kubernetes clusters</title>
+      <link>https://blog.valdar.it/2019/11/skupperio-local-service-exporter/</link>
+      <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
+      
+      <guid>https://blog.valdar.it/2019/11/skupperio-local-service-exporter/</guid>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
+ In the past few years, the popularity and adoption of containers has skyrocketed, and the Kubernetes container orchestration platform has been largely adopted as well. With these changes, a new set of challenges has emerged when dealing with applications deployed on Kubernetes clusters in the real world.</description>
+    </item>
     
     <item>
       <title>Use Groovy to customize the Maven build process</title>
@@ -19,7 +29,7 @@
       
       <guid>https://blog.valdar.it/2018/10/groovy-customize-maven/</guid>
       <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
- Apache Maven is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a pom.xml file to centrally manage a project&amp;rsquo;s build and its dependencies. If you have worked anywhere near to the Java ecosystem chances are that, for the good or for the bad, you have come across the use of this tool.</description>
+ Apache Maven is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a pom.xml file to centrally manage a project&#39;s build and its dependencies. If you have worked anywhere near to the Java ecosystem chances are that, for the good or for the bad, you have come across the use of this tool.</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Valdar&#39;s Blog</title>
@@ -7,13 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 11 Oct 2018 12:08:20 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 Nov 2019 22:56:53 +0100</lastBuildDate>
     
 	<atom:link href="https://blog.valdar.it/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Groovy</title>
+      <title>cloud</title>
+      <link>https://blog.valdar.it/tags/cloud/</link>
+      <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
+      
+      <guid>https://blog.valdar.it/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://blog.valdar.it/tags/kubernetes/</link>
+      <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
+      
+      <guid>https://blog.valdar.it/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openshift</title>
+      <link>https://blog.valdar.it/tags/openshift/</link>
+      <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
+      
+      <guid>https://blog.valdar.it/tags/openshift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>skupper.io</title>
+      <link>https://blog.valdar.it/tags/skupper.io/</link>
+      <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
+      
+      <guid>https://blog.valdar.it/tags/skupper.io/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>groovy</title>
       <link>https://blog.valdar.it/tags/groovy/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
       
@@ -22,7 +58,7 @@
     </item>
     
     <item>
-      <title>Maven</title>
+      <title>maven</title>
       <link>https://blog.valdar.it/tags/maven/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
       
@@ -31,7 +67,7 @@
     </item>
     
     <item>
-      <title>Syndesis</title>
+      <title>syndesis</title>
       <link>https://blog.valdar.it/tags/syndesis/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
       

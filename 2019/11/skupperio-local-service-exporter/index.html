@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.61.0" />
+
+    
+    
+    
+
+<title>Skupper.io: let your services communicate across Kubernetes clusters • Valdar&#39;s Blog</title>
+<meta name="description" content="valdar&#39;s blog :: my own thoughts, opinions and rants on technology.">
+<meta name="keywords" content="blog,java,groovy,golang,javascript,shell,thoughts,apache,camel,apache camel">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Skupper.io: let your services communicate across Kubernetes clusters"/>
+<meta name="twitter:description" content="Introduction to Skupper.io project a Virtual Application Network (VAN) implementation for Kubernetes multi-cluster comunications. It can even be used to export a local service in a private network to a public Kubernetes cluste!"/>
+
+<meta property="og:title" content="Skupper.io: let your services communicate across Kubernetes clusters" />
+<meta property="og:description" content="Introduction to Skupper.io project a Virtual Application Network (VAN) implementation for Kubernetes multi-cluster comunications. It can even be used to export a local service in a private network to a public Kubernetes cluste!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.valdar.it/2019/11/skupperio-local-service-exporter/" />
+<meta property="article:published_time" content="2019-11-26T22:56:53+01:00" />
+<meta property="article:modified_time" content="2019-11-26T22:56:53+01:00" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-dark.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.6f40d28e777b288cb757a1db116a257b6f8dffc63a05e8473d12dc09a52d8d79.css" integrity="sha256-b0DSjnd7KIy3V6HbEWole2&#43;N/8Y6BehHPRLcCaUtjXk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://blog.valdar.it/">Valdar&#39;s Blog</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://blog.valdar.it/img/me.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         my own thoughts, opinions and rants on technology. 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Valdar&#39;s Blog</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/valdar" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/valdar" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://bitbucket.org/valdar9" rel="me"><i class="fab fa-bitbucket fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://gitlab.com/valdar" rel="me"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://linkedin.com/in/andreatarocchi" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://stackoverflow.com/users/5559361" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	&nbsp;<a href="https://about.me/andrea.tarocchi"><i class="fas fa-address-card fa-lg" aria-hidden="true"></i></a>
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Skupper.io: let your services communicate across Kubernetes clusters</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 26, 2019
+    
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/skupper.io">skupper.io</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/cloud">cloud</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/kubernetes">kubernetes</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/openshift">openshift</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 6 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <blockquote>
+    <p>This post was originally published on <a href="https://developers.redhat.com/blog">Red Hat Developers</a>, the community to learn, code, and share faster. To read the original post, <a href="https://developers.redhat.com/blog/2020/01/01/skupper-io-let-your-services-communicate-across-kubernetes-clusters/">click here</a>.</p>
+</blockquote>
+
+<p>In the past few years, the popularity and adoption of containers has skyrocketed, and the Kubernetes container orchestration platform has been largely adopted as well. With these changes, a new set of challenges has emerged when dealing with applications deployed on <a href="https://kubernetes.io/">Kubernetes</a> clusters in the real world. One challenge is how to deal with communication between multiple clusters that might be in different networks (even private ones), behind firewalls, and so on.</p>
+<p>One possible solution to this problem is to use a Virtual Application Network (VAN), which is sometimes referred to as a Layer 7 network. In a nutshell, a VAN is a logical network that is deployed at the application level and introduces a new layer of addressing for fine-grained application components with no constraints on the network topology. For a much more in-depth explanation, please read <a href="https://netprototalk.com/2019/11/12/virtual-application-networks-for-hybrid-cloud-interconnect/">this excellent article</a>.</p>
+<p>So what is <a href="https://skupper.io">skupper.io</a>? In the project’s own words: <em>&ldquo;Skupper is a layer 7 service interconnect. It enables secure communication across Kubernetes clusters with no VPNs or special firewall rules.&quot;</em>
+Skupper is a VAN implementation. Its high-level architecture is depicted in Figure 1:</p>
+
+  
+
+
+
+
+
+<figure >
+  
+    <a href="skupper-overview.png"
+    
+    >
+  
+  <img
+      
+        src="https://blog.valdar.it/2019/11/skupperio-local-service-exporter/skupper-overview.png"
+      
+        alt="Skupper overview"
+        
+        
+        
+         style="max-width: 100%;"
+         />
+  </a>
+  
+  
+    <figcaption>
+      <span class="img--caption">
+        Figure 1. Skupper architectural overview
+        
+      </span>
+    </figcaption>
+  
+</figure>
+
+
+
+<p>Once Skupper is installed in each Kubernetes cluster and connected with the others, Service A from cluster one can communicate with Service B from cluster two, and with Service C from cluster three (and the other way around). The clusters do not need to be all public or on the same infrastructure. They can be behind a firewall, or even on private networks not accessible from outside (providing that they can reach outside to connect themselves to the skupper VAN).</p>
+<h1 id="skupper-architecture">Skupper architecture</h1>
+<p>Given the overall architecture, how does the green Skupper component in Figure 1 work? Figure 2 lists the Skupper components for Kubernetes cluster one and describes the interactions between them:</p>
+
+  
+
+
+
+
+
+<figure >
+  
+    <a href="skupper-delaied-architecture.png"
+    
+    >
+  
+  <img
+      
+        src="https://blog.valdar.it/2019/11/skupperio-local-service-exporter/skupper-detailed-architecture.png"
+      
+        alt="Skupper detailed architecture"
+        
+        
+        
+         style="max-width: 100%;"
+         />
+  </a>
+  
+  
+    <figcaption>
+      <span class="img--caption">
+        Figure 2. Skupper detailed architecture
+        
+      </span>
+    </figcaption>
+  
+</figure>
+
+
+
+<p>The first thing to notice is that Skupper can be managed using the dedicated <code>skupper</code> CLI command.
+Next is that when you first install Skupper in a Kubernetes and OpenShift cluster, two components are deployed: <code>skupper-router</code> and <code>skupper-proxy-controller</code>. The former is an instance of <a href="https://qpid.apache.org/">Apache Qpid</a>, an open source Advanced Message Queuing Protocol (AMQP) router that is responsible for creating the VAN. Qpid helps Kubernetes and OpenShift clusters communicate by tunneling HTTP and TCP traffic into AMQP.</p>
+<p>If you are familiar with the <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator pattern</a>, think of <code>skupper-proxy-controller</code> as an operator: this tool watches for services annotated with <code>skupper.io/proxy</code> and instantiates, for each of them, a <code>service-*-proxy</code> pod. That pod will tunnels the protocols spoken by Service A (i.e. http or tcp) into AMQP and the <code>skupper-router</code> does the rest.</p>
+<h1 id="use-case-a-local-service-exporter-with-skupper">Use case: a local service exporter with Skupper</h1>
+<p>Another challenge that comes with developing cloud-native applications coding and testing effectively in a hybrid environment. Some of the services that compose your application might be, at development time, hosted locally on your laptop (or in your dev environment), while others might be deployed on a remote Kubernetes cluster. How would you easily make your local services accessible to the remote cluster without setting up a VPN or another “complicated” network configuration?</p>
+<p>One option is to leverage the Skupper mechanism to export a local service running outside of Kubernetes to a remote Kubernetes cluster. Figure 3 sketches what we want to achieve—a simple TCP echo service running on our laptop that is usually connected to a firewalled private network:</p>
+
+  
+
+
+
+
+
+<figure >
+  
+    <a href="service-exporter.png"
+    
+    >
+  
+  <img
+      
+        src="https://blog.valdar.it/2019/11/skupperio-local-service-exporter/service-exporter.png"
+      
+        alt="&amp;ldquo;Service exporter&amp;rdquo; use case with Skupper"
+        
+        
+        
+         style="max-width: 100%;"
+         />
+  </a>
+  
+  
+    <figcaption>
+      <span class="img--caption">
+        Figure 3. &amp;ldquo;Service exporter&amp;rdquo; use case with Skupper
+        
+      </span>
+    </figcaption>
+  
+</figure>
+
+
+
+<p>We want to access this service from a pod running on the remote Kubernetes cluster that has no network access to the laptop network.
+Note: A number of manual steps are needed at the moment because this use case is not yet implemented as a <code>skupper</code> CLI subcommand. There is an issue open regarding when that feature will be implemented. When it is, all of the following steps will be replaced by a single <code>skupper</code> CLI invocation.</p>
+<p>Let us look at the steps you will need to follow (for now):</p>
+<ul>
+<li>
+<p>Start by downloading the latest version of the <code>skupper</code> CLI from <a href="https://github.com/skupperproject/skupper-cli/releases">https://github.com/skupperproject/skupper-cli/releases</a> . Add it to your path and make it executable.</p>
+</li>
+<li>
+<p>Log into your remote cluster with <code>oc</code> ore <code>kubectl</code>.</p>
+</li>
+<li>
+<p>Install Skupper on the remote cluster:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">skupper init --id public
+</code></pre></div></li>
+<li>
+<p>Make the skupper router accessible from outside the cluster:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc apply -f - <span style="color:#e6db74">&lt;&lt; EOF
+</span><span style="color:#e6db74">kind: Route
+</span><span style="color:#e6db74">apiVersion: route.openshift.io/v1
+</span><span style="color:#e6db74">metadata:
+</span><span style="color:#e6db74">  name: skupper-messaging
+</span><span style="color:#e6db74">spec:
+</span><span style="color:#e6db74">  to:
+</span><span style="color:#e6db74">    kind: Service
+</span><span style="color:#e6db74">    name: skupper-messaging
+</span><span style="color:#e6db74">    weight: 100
+</span><span style="color:#e6db74">  port:
+</span><span style="color:#e6db74">    targetPort: amqps
+</span><span style="color:#e6db74">  tls:
+</span><span style="color:#e6db74">    termination: passthrough
+</span><span style="color:#e6db74">    insecureEdgeTerminationPolicy: None
+</span><span style="color:#e6db74">  wildcardPolicy: None
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div></li>
+<li>
+<p>Create a service on the cluster representing the local echo service. This service will not have an implementation, it is just to help Skupper to correctly handle this feature:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc apply -f - <span style="color:#e6db74">&lt;&lt; EOF
+</span><span style="color:#e6db74">kind: Service
+</span><span style="color:#e6db74">apiVersion: v1
+</span><span style="color:#e6db74">metadata:
+</span><span style="color:#e6db74">  name: echo
+</span><span style="color:#e6db74">  annotations:
+</span><span style="color:#e6db74">    skupper.io/proxy: tcp
+</span><span style="color:#e6db74">spec:
+</span><span style="color:#e6db74">  ports:
+</span><span style="color:#e6db74">    - protocol: TCP
+</span><span style="color:#e6db74">      port: 2000
+</span><span style="color:#e6db74">      targetPort: 2000
+</span><span style="color:#e6db74">  selector:
+</span><span style="color:#e6db74">    dummy: selector
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div></li>
+<li>
+<p>Clone the <code>skupper-proxy</code> project:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:skupperproject/skupper-proxy.git
+</code></pre></div></li>
+<li>
+<p>Go to that project’s <code>bin/</code> directory with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd skupper-proxy/bin
+</code></pre></div></li>
+<li>
+<p>Extract certificates that are needed to mutually authenticate your connection:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc extract secret/skupper
+</code></pre></div></li>
+<li>
+<p>modify <code>connection.json</code> to look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;scheme&#34;</span>: <span style="color:#e6db74">&#34;amqps&#34;</span>,
+    <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;&lt;your-host&gt;&#34;</span>,
+    <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#e6db74">&#34;443&#34;</span>,
+    <span style="color:#f92672">&#34;verify&#34;</span>: <span style="color:#66d9ef">false</span>,
+    <span style="color:#f92672">&#34;tls&#34;</span>: {
+        <span style="color:#f92672">&#34;ca&#34;</span>: <span style="color:#e6db74">&#34;ca.crt&#34;</span>,
+        <span style="color:#f92672">&#34;cert&#34;</span>: <span style="color:#e6db74">&#34;tls.crt&#34;</span>,
+        <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;tls.key&#34;</span>,
+        <span style="color:#f92672">&#34;verify&#34;</span>: <span style="color:#66d9ef">false</span>
+    }
+}
+</code></pre></div><p>where the host can be obtained by:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc get route skupper-messaging -o<span style="color:#f92672">=</span>jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.spec.host}{&#34;\n&#34;}&#39;</span>
+</code></pre></div></li>
+<li>
+<p>Run a simple bash TCP echo service on port 2000 locally in a separate shell that will be kept running:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nc -l <span style="color:#ae81ff">2000</span> -k -c <span style="color:#e6db74">&#39;xargs -n1 echo&#39;</span>
+</code></pre></div></li>
+<li>
+<p>Connect to the Skupper running on the remote cluster. Note that the port must match the one used by the echo service in step 10 (i.e., 2000) and <code>echo</code> must match the name of the service you created on the cluster earlier:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">node ./simple.js <span style="color:#e6db74">&#39;amqp:echo=&gt;tcp:2000&#39;</span>
+</code></pre></div></li>
+</ul>
+<p>Now everything is set. You can go the remote cluster, use a pod that has the Netcat command <code>nc</code> installed like <code>busybox:latest</code>, and run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nc localhost echo
+</code></pre></div><p>Type a word, and you should see it echoed back as it passes through <code>skupper-proxy-pod</code> -&gt; <code>skupper routerrouter</code> -&gt; <code>simple.js</code> on your laptop -&gt; <code>TCP echo service</code> on your laptop, and back!</p>
+<h1 id="conclusions-and-next-steps">Conclusions and next steps</h1>
+<p>The project is still under heavy development improving every day. Check out the progress on the official site <a href="https://skupper.io">https://skupper.io</a> or directly the code on the github project <a href="https://github.com/skupperproject">https://github.com/skupperproject</a>. In particular, this one is the issue <a href="https://github.com/skupperproject/skupper-cli/issues/11">https://github.com/skupperproject/skupper-cli/issues/11</a> that tracks all the work involved in supporting the &ldquo;local service exporter use case&rdquo; directly as a skupper CLI command.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/2018/10/groovy-customize-maven/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Use Groovy to customize the Maven build process</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+
+
+
+  
+    
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+
+    (function () {
+    if (location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1" ||
+      location.hostname === "") {
+      return;
+    }
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    var disqus_shortname = 'valdar';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || 
+      document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the
+  <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by
+  <span class="logo-disqus">Disqus</span>
+</a>
+
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

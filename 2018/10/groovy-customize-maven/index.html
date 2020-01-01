@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.49.1" />
+<meta name="generator" content="Hugo 0.61.0" />
 
     
     
@@ -27,8 +27,9 @@
 <meta property="og:title" content="Use Groovy to customize the Maven build process" />
 <meta property="og:description" content="Use Groovy to customize the Maven build process without writing a maven pulgin; explained thorugh a Real world use case example taken from the http://syndesis.io project." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.valdar.it/2018/10/groovy-customize-maven/" /><meta property="article:published_time" content="2018-10-11T12:08:20&#43;02:00"/>
-<meta property="article:modified_time" content="2018-10-11T12:08:20&#43;02:00"/>
+<meta property="og:url" content="https://blog.valdar.it/2018/10/groovy-customize-maven/" />
+<meta property="article:published_time" content="2018-10-11T12:08:20+02:00" />
+<meta property="article:modified_time" content="2018-10-11T12:08:20+02:00" />
 
 
     
@@ -43,10 +44,10 @@
 
 
 
-<link rel="stylesheet" href="https://blog.valdar.it/scss/hyde-hyde.6f40d28e777b288cb757a1db116a257b6f8dffc63a05e8473d12dc09a52d8d79.css" integrity="sha256-b0DSjnd7KIy3V6HbEWole2&#43;N/8Y6BehHPRLcCaUtjXk=">
+<link rel="stylesheet" href="/scss/hyde-hyde.6f40d28e777b288cb757a1db116a257b6f8dffc63a05e8473d12dc09a52d8d79.css" integrity="sha256-b0DSjnd7KIy3V6HbEWole2&#43;N/8Y6BehHPRLcCaUtjXk=">
 
 
-<link rel="stylesheet" href="https://blog.valdar.it/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
 
 
 
@@ -58,6 +59,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
+    
     
 
 </head>
@@ -72,11 +74,14 @@
         <a href="https://blog.valdar.it/">Valdar&#39;s Blog</a>
       </span>
       
+        
+        
+        
+        <div class="author-image">
+          <img src="https://blog.valdar.it/img/me.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
       
-      
-      <div class="author-image">
-        <img src="https://blog.valdar.it//img/me.png" alt="Author Image" class="img--circle img--headshot element--center">
-      </div>
       
       <p class="site__description">
          my own thoughts, opinions and rants on technology. 
@@ -106,7 +111,6 @@
 				</li>
 			 
 		
-		</li>
 	</ul>
 </div>
 
@@ -120,6 +124,8 @@
 	
 	
 	<a href="https://bitbucket.org/valdar9" rel="me"><i class="fab fa-bitbucket fa-lg" aria-hidden="true"></i></a>
+	
+	
 	
 	
 	<a href="https://gitlab.com/valdar" rel="me"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a>
@@ -143,19 +149,16 @@
 
       </div>
     </div>
-    <div class="copyright">
-  &copy; 2019 valdar.
-  <a href="https://creativecommons.org/licenses/by-sa/4.0">Some Rights Reserved</a>.
-  Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
-  
-</div>
+    
+
 
   </div>
 </div>
 
         <div class="content container">
             
-    <article>
+    
+<article>
   <header>
     <h1>Use Groovy to customize the Maven build process</h1>
     
@@ -194,65 +197,53 @@
   
   
   <div class="post">
-    
-
-<blockquote>
+    <blockquote>
     <p>This post was originally published on <a href="https://developers.redhat.com/blog">Red Hat Developers</a>, the community to learn, code, and share faster. To read the original post, <a href="https://developers.redhat.com/blog/2018/10/10/groovy-customize-maven-build">click here</a>.</p>
 </blockquote>
 
-
-<p><a href="https://maven.apache.org">Apache Maven</a> is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a <code>pom.xml</code> file to centrally manage a project&rsquo;s build and its dependencies. If you have worked anywhere near to the <a href="https://developers.redhat.com/blog/category/java/">Java ecosystem</a> chances are that, for the good or for the bad, you have come across the use of this tool.</p>
-
+<p><a href="https://maven.apache.org">Apache Maven</a> is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a <code>pom.xml</code> file to centrally manage a project's build and its dependencies. If you have worked anywhere near to the <a href="https://developers.redhat.com/blog/category/java/">Java ecosystem</a> chances are that, for the good or for the bad, you have come across the use of this tool.</p>
 <p>Maven plugins are used to enhance and customize the Maven build process; while the <a href="https://maven.apache.org/plugins/">list of existing plugins</a> is quite extensive, it is common to need to implement some small changes or tweak the build just a bit, which makes writing a whole plugin feel like overkill.</p>
-
 <p>This post describes a possible solution: the <a href="https://github.com/groovy/GMavenPlus">GMaven Plus plugin</a>.</p>
-
 <p>GMaven Plus is a Maven plugin for managing Groovy projects with Maven. Among other features, it has an execute script goal that can be configured easily, as shown in the following snippet:</p>
-
-<pre><code class="language-xml">&lt;build&gt;
-  &lt;plugins&gt;
-    &lt;plugin&gt;
-      &lt;groupId&gt;org.codehaus.gmavenplus&lt;/groupId&gt;
-      &lt;artifactId&gt;gmavenplus-plugin&lt;/artifactId&gt;
-      &lt;version&gt;1.6.1&lt;/version&gt;
-      &lt;executions&gt;
-        &lt;execution&gt;
-          &lt;goals&gt;
-            &lt;goal&gt;execute&lt;/goal&gt;
-          &lt;/goals&gt;
-        &lt;/execution&gt;
-      &lt;/executions&gt;
-      &lt;configuration&gt;
-        &lt;properties&gt;
-          &lt;property&gt;
-            &lt;name&gt;someProp&lt;/name&gt;
-            &lt;value&gt;${someProp}&lt;/value&gt;
-          &lt;/property&gt;
-        &lt;/properties&gt;
-        &lt;scripts&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;build</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;plugins</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;plugin</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.codehaus.gmavenplus<span style="color:#f92672">&lt;/groupId&gt;</span>
+      <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>gmavenplus-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+      <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>1.6.1<span style="color:#f92672">&lt;/version&gt;</span>
+      <span style="color:#f92672">&lt;executions</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;execution</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;goals</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;goal</span><span style="color:#f92672">&gt;</span>execute<span style="color:#f92672">&lt;/goal&gt;</span>
+          <span style="color:#f92672">&lt;/goals&gt;</span>
+        <span style="color:#f92672">&lt;/execution&gt;</span>
+      <span style="color:#f92672">&lt;/executions&gt;</span>
+      <span style="color:#f92672">&lt;configuration</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;properties</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;property</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;name</span><span style="color:#f92672">&gt;</span>someProp<span style="color:#f92672">&lt;/name&gt;</span>
+            <span style="color:#f92672">&lt;value</span><span style="color:#f92672">&gt;</span>${someProp}<span style="color:#f92672">&lt;/value&gt;</span>
+          <span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;/properties&gt;</span>
+        <span style="color:#f92672">&lt;scripts</span><span style="color:#f92672">&gt;</span>
           //your Groovy code goes here
-        &lt;/scripts&gt; 
-      &lt;/configuration&gt; 
-      &lt;dependencies&gt; 
-        &lt;dependency&gt; 
-          &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt; 
-          &lt;artifactId&gt;groovy-all&lt;/artifactId&gt; 
-          &lt;version&gt;2.5.0&lt;/version&gt; 
-          &lt;type&gt;pom&lt;/type&gt; 
-          &lt;scope&gt;runtime&lt;/scope&gt; 
-        &lt;/dependency&gt; 
-      &lt;/dependencies&gt; 
-    &lt;/plugin&gt; 
-  &lt;/plugins&gt; 
-&lt;/build&gt;
-</code></pre>
-
-<p>The execution of the Groovy script can be bound to any Maven phase; furthermore, inside the script, the objects <code>session</code> and <code>project</code> can be used to interact with the Maven build. For instance, the project name can be logged with <code>log.info &quot;$project.name&quot;</code>. (There are other useful Maven objects available to be used in the Groovy script along with other useful goodies like using <code>@Grab</code> to download external dependencies your script might have; check the <a href="https://github.com/groovy/GMavenPlus/wiki/Examples#execute-scripts">examples</a>). Due to the combination of these two capabilities, it is quite easy to extend the Maven build process directly with an inline Groovy script placed directly in the <code>pom.xml</code> file, as shown above.</p>
-
+        <span style="color:#f92672">&lt;/scripts&gt;</span> 
+      <span style="color:#f92672">&lt;/configuration&gt;</span> 
+      <span style="color:#f92672">&lt;dependencies</span><span style="color:#f92672">&gt;</span> 
+        <span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span> 
+          <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.codehaus.groovy<span style="color:#f92672">&lt;/groupId&gt;</span> 
+          <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>groovy-all<span style="color:#f92672">&lt;/artifactId&gt;</span> 
+          <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>2.5.0<span style="color:#f92672">&lt;/version&gt;</span> 
+          <span style="color:#f92672">&lt;type</span><span style="color:#f92672">&gt;</span>pom<span style="color:#f92672">&lt;/type&gt;</span> 
+          <span style="color:#f92672">&lt;scope</span><span style="color:#f92672">&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span> 
+        <span style="color:#f92672">&lt;/dependency&gt;</span> 
+      <span style="color:#f92672">&lt;/dependencies&gt;</span> 
+    <span style="color:#f92672">&lt;/plugin&gt;</span> 
+  <span style="color:#f92672">&lt;/plugins&gt;</span> 
+<span style="color:#f92672">&lt;/build&gt;</span>
+</code></pre></div><p>The execution of the Groovy script can be bound to any Maven phase; furthermore, inside the script, the objects <code>session</code> and <code>project</code> can be used to interact with the Maven build. For instance, the project name can be logged with <code>log.info &quot;$project.name&quot;</code>. (There are other useful Maven objects available to be used in the Groovy script along with other useful goodies like using <code>@Grab</code> to download external dependencies your script might have; check the <a href="https://github.com/groovy/GMavenPlus/wiki/Examples#execute-scripts">examples</a>). Due to the combination of these two capabilities, it is quite easy to extend the Maven build process directly with an inline Groovy script placed directly in the <code>pom.xml</code> file, as shown above.</p>
 <h2 id="a-real-world-example">A real-world example</h2>
-
-<p>Instead of using a fictional example to showcase how to use the GMaven Plus plugin for our purposes, I think it would be beneficial to look at a real-world example. The example is taken from the <a href="https://syndesis.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener">Syndesis</a> project.</p>
-
+<p>Instead of using a fictional example to showcase how to use the GMaven Plus plugin for our purposes, I think it would be beneficial to look at a real-world example. The example is taken from the [Syndesis](<a href="https://syndesis.io/%22">https://syndesis.io/&quot;</a> target=&rdquo;_blank&rdquo; rel=&quot;noopener) project.</p>
 <p>Syndesis is an integration Platform-as-a-Service (iPaaS) that aims to simplify collaboration between business users, integration experts, and application developers. It is a cloud-native toolchain and runtime, available right from your browser. It is an open source project on which <a href="https://developers.redhat.com/products/fuse/overview/">Red Hat Fuse Online</a> is based.
 
   
@@ -291,7 +282,6 @@
 
 
 </p>
-
 <p>Using just the Syndesis web UI, it is possible to define, run, and manage an integration that, for instance, takes data from Twitter and saves it in a database or sends a message to a messaging system like Apache Kafka or Apache ActiveMQ. These tasks historically required an integration specialist and a developer to work together, sometimes for days, but with Syndesis these tasks can be accomplished in a no-code fashion directly by a business user.
 
   
@@ -330,57 +320,52 @@
 
 
 </p>
-
 <p>The platform is extensible through extensions to cover less-standard and more-particular cases (some extensions are collected in their own <a href="https://github.com/syndesisio/syndesis-extensions">GitHub repository</a>). Usually, it is a developer that takes care of creating such an extension and building it. In order to do so, the extensions must be built against the version of the Syndesis platform on which they will be loaded. Manually retrieving and setting the Syndesis version in the syndesis-extension project is a tedious and error-prone activity. It would be much better if you could pass the Syndesis platform URL to the build process and Maven would automatically get the right version and use it.</p>
-
 <h2 id="solution-explained">Solution explained</h2>
-
 <p>The Groovy script in <a href="https://github.com/syndesisio/syndesis-extensions/blob/af61fb81c74ce02cc4cd63451eca4620e8718c46/pom.xml#L114-L180">syndesis-extension project pom.xml</a> implements the following logic: the URL is passed in a property named <code>syndesisServerUrl</code> that is used to dynamically retrieve the Syndesis version and set it as <code>syndesis.version</code> in the Maven project. If no URL is provided, Maven will fall back to using the <code>syndesis.version</code> present in the <code>pom.xml</code> file.</p>
-
 <p>The relevant part of the <code>pom.xml</code> file is shown below:</p>
-
-<pre><code class="language-xml">&lt;plugin&gt;
-  &lt;groupId&gt;org.codehaus.gmavenplus&lt;/groupId&gt;
-  &lt;artifactId&gt;gmavenplus-plugin&lt;/artifactId&gt;
-  &lt;version&gt;1.6&lt;/version&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;id&gt;get-syndesis-version&lt;/id&gt;
-      &lt;phase&gt;initialize&lt;/phase&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;execute&lt;/goal&gt;
-      &lt;/goals&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-  &lt;configuration&gt;
-    &lt;scripts&gt;
-      &lt;script&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;plugin</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.codehaus.gmavenplus<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>gmavenplus-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>1.6<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;executions</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;execution</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;id</span><span style="color:#f92672">&gt;</span>get-syndesis-version<span style="color:#f92672">&lt;/id&gt;</span>
+      <span style="color:#f92672">&lt;phase</span><span style="color:#f92672">&gt;</span>initialize<span style="color:#f92672">&lt;/phase&gt;</span>
+      <span style="color:#f92672">&lt;goals</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;goal</span><span style="color:#f92672">&gt;</span>execute<span style="color:#f92672">&lt;/goal&gt;</span>
+      <span style="color:#f92672">&lt;/goals&gt;</span>
+    <span style="color:#f92672">&lt;/execution&gt;</span>
+  <span style="color:#f92672">&lt;/executions&gt;</span>
+  <span style="color:#f92672">&lt;configuration</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;scripts</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;script</span><span style="color:#f92672">&gt;</span>
         [...]
-        log.debug &quot;START getting syndesis version from a running Syndesis server.&quot;
+        log.debug &#34;START getting syndesis version from a running Syndesis server.&#34;
                   
-        def syndesisServerUrl = getPropertyValue('syndesisServerUrl')
-        log.debug &quot;syndesisServerUrl value = $syndesisServerUrl&quot;
+        def syndesisServerUrl = getPropertyValue(&#39;syndesisServerUrl&#39;)
+        log.debug &#34;syndesisServerUrl value = $syndesisServerUrl&#34;
 
         if( syndesisServerUrl != null ) {
         [...]
                  
-        String syndesisVersionUrl = syndesisServerUrl+&quot;/api/v1/version&quot;
-        log.info &quot;About to call GET on $syndesisVersionUrl&quot; 
+        String syndesisVersionUrl = syndesisServerUrl+&#34;/api/v1/version&#34;
+        log.info &#34;About to call GET on $syndesisVersionUrl&#34; 
         def version = null
           try {
-            version = new URL(syndesisVersionUrl).getText(requestProperties: [Accept: 'text/plain'])
+            version = new URL(syndesisVersionUrl).getText(requestProperties: [Accept: &#39;text/plain&#39;])
             String syndesisVesrion = new String(version)
-            project.properties.setProperty('syndesis.version', syndesisVesrion)
-            log.info &quot;syndesis.version set to: $syndesisVesrion&quot;
+            project.properties.setProperty(&#39;syndesis.version&#39;, syndesisVesrion)
+            log.info &#34;syndesis.version set to: $syndesisVesrion&#34;
           } catch(Exception ex) {
-            log.error &quot;Error during syndesis version GET from $syndesisVersionUrl&quot;
+            log.error &#34;Error during syndesis version GET from $syndesisVersionUrl&#34;
             ex.printStackTrace()
             throw ex
           } finally {
-            log.info &quot;Called GET on $syndesisVersionUrl with result $version&quot;
+            log.info &#34;Called GET on $syndesisVersionUrl with result $version&#34;
           }
         } else {
-         log.info &quot;syndesisServerUrl property not set, the syndesis.version from pom.xml will be used.&quot;
+         log.info &#34;syndesisServerUrl property not set, the syndesis.version from pom.xml will be used.&#34;
         }
 
         [...]
@@ -391,40 +376,27 @@
           return project.properties[name]
         }
 
-        log.debug &quot;END getting syndesis version from a running Syndesis server.&quot;
-      &lt;/script&gt;
-    &lt;/scripts&gt;
-  &lt;/configuration&gt;
-  &lt;dependencies&gt;
-     &lt;dependency&gt;
-        &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
-        &lt;artifactId&gt;groovy-all&lt;/artifactId&gt;
-        &lt;version&gt;2.4.12&lt;/version&gt;
-        &lt;scope&gt;runtime&lt;/scope&gt;
-     &lt;/dependency&gt;
-  &lt;/dependencies&gt;
-&lt;/plugin&gt;
-</code></pre>
-
-<p>The above snippet contains the most significant lines. First off, the line</p>
-
-<pre><code class="language-xml">&lt;phase&gt;initialize&lt;/phase&gt;
-</code></pre>
-
-<p>binds the script execution to the initialization phase; hence, it will be executed at the beginning of each Maven build. The rest of the script is a self-explanatory Groovy code implementation of the logic described at the beginning of this section. Perhaps the most crucial line is</p>
-
-<pre><code class="language-java">project.properties.setProperty('syndesis.version', syndesisVersion)
-</code></pre>
-
-<p>which sets the <code>syndesis.version</code> property in the Maven <code>project</code> object. In this way, if a user invokes the build with</p>
-
-<pre><code class="language-bash">mvn clean install -DsyndesisServerUrl=https://your.syndesis.server.url
-</code></pre>
-
-<p>the Syndesis version is dynamically taken from the provided URL.</p>
-
+        log.debug &#34;END getting syndesis version from a running Syndesis server.&#34;
+      <span style="color:#f92672">&lt;/script&gt;</span>
+    <span style="color:#f92672">&lt;/scripts&gt;</span>
+  <span style="color:#f92672">&lt;/configuration&gt;</span>
+  <span style="color:#f92672">&lt;dependencies</span><span style="color:#f92672">&gt;</span>
+     <span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.codehaus.groovy<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>groovy-all<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>2.4.12<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;scope</span><span style="color:#f92672">&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+     <span style="color:#f92672">&lt;/dependency&gt;</span>
+  <span style="color:#f92672">&lt;/dependencies&gt;</span>
+<span style="color:#f92672">&lt;/plugin&gt;</span>
+</code></pre></div><p>The above snippet contains the most significant lines. First off, the line</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;phase</span><span style="color:#f92672">&gt;</span>initialize<span style="color:#f92672">&lt;/phase&gt;</span>
+</code></pre></div><p>binds the script execution to the initialization phase; hence, it will be executed at the beginning of each Maven build. The rest of the script is a self-explanatory Groovy code implementation of the logic described at the beginning of this section. Perhaps the most crucial line is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">project<span style="color:#f92672">.</span><span style="color:#a6e22e">properties</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">&#39;</span>syndesis<span style="color:#f92672">.</span><span style="color:#a6e22e">version</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">,</span> syndesisVersion<span style="color:#f92672">)</span>
+</code></pre></div><p>which sets the <code>syndesis.version</code> property in the Maven <code>project</code> object. In this way, if a user invokes the build with</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn clean install -DsyndesisServerUrl<span style="color:#f92672">=</span>https://your.syndesis.server.url
+</code></pre></div><p>the Syndesis version is dynamically taken from the provided URL.</p>
 <h2 id="conclusion">Conclusion</h2>
-
 <p>This article presented a way to use the GMaven Plus plugin to tap into a Maven build and interact with it without the need to write a whole Maven plugin. Furthermore, it presented and commented on a real-world usage of that technique in order to provide some context to the discussion.</p>
 
   </div>
@@ -432,6 +404,11 @@
 
 <div class="navigation navigation-single">
     
+    
+    <a href="/2019/11/skupperio-local-service-exporter/" class="navigation-next">
+      <span class="navigation-tittle">Skupper.io: let your services communicate across Kubernetes clusters</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
@@ -480,15 +457,13 @@
         </div>
         
     
-<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
-  integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
-  crossorigin="anonymous">
-</script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
 
     
     
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
         
     
     <script type="text/javascript">
