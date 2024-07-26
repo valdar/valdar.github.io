@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on Valdar&#39;s Blog</title>
+    <link>https://blog.valdar.it/tags/ai/</link>
+    <description>Recent content in AI on Valdar&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 24 Aug 2023 22:56:53 +0100</lastBuildDate>
+    <atom:link href="https://blog.valdar.it/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to leverage AI to generate Apache Camel routes </title>
+      <link>https://blog.valdar.it/2023/08/camel-and-ai/</link>
+      <pubDate>Thu, 24 Aug 2023 22:56:53 +0100</pubDate>
+      <guid>https://blog.valdar.it/2023/08/camel-and-ai/</guid>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.&#xA;In recent years, the integration of artificial intelligence (AI) in various fields has sparked new possibilities and advancements. One intriguing application of AI lies in generating domain-specific language (DSL) documents. DSLs are designed to address specific domains or problem spaces (such as enterprise integration), allowing developers to express solutions in a more natural way, removing the cognitive complexity related to boilerplate code.</description>
+    </item>
+    <item>
+      <title>How to leverage AI to generate Apache Camel routes </title>
+      <link>https://blog.valdar.it/2023/08/camel-and-ai/</link>
+      <pubDate>Thu, 24 Aug 2023 22:56:53 +0100</pubDate>
+      <guid>https://blog.valdar.it/2023/08/camel-and-ai/</guid>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.&#xA;In recent years, the integration of artificial intelligence (AI) in various fields has sparked new possibilities and advancements. One intriguing application of AI lies in generating domain-specific language (DSL) documents. DSLs are designed to address specific domains or problem spaces (such as enterprise integration), allowing developers to express solutions in a more natural way, removing the cognitive complexity related to boilerplate code.</description>
+    </item>
+  </channel>
+</rss>

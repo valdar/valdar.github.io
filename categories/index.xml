@@ -4,12 +4,9 @@
     <title>Categories on Valdar&#39;s Blog</title>
     <link>https://blog.valdar.it/categories/</link>
     <description>Recent content in Categories on Valdar&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    
-	<atom:link href="https://blog.valdar.it/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://blog.valdar.it/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

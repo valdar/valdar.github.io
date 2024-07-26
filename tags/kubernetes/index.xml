@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kubernetes on Valdar&#39;s Blog</title>
+    <title>Kubernetes on Valdar&#39;s Blog</title>
     <link>https://blog.valdar.it/tags/kubernetes/</link>
-    <description>Recent content in kubernetes on Valdar&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Kubernetes on Valdar&#39;s Blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Tue, 26 Nov 2019 22:56:53 +0100</lastBuildDate>
-    
-	<atom:link href="https://blog.valdar.it/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://blog.valdar.it/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Skupper.io: let your services communicate across Kubernetes clusters</title>
+      <title>Skupper.io: communication across Kubernetes clusters</title>
       <link>https://blog.valdar.it/2019/11/skupperio-local-service-exporter/</link>
       <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
-      
       <guid>https://blog.valdar.it/2019/11/skupperio-local-service-exporter/</guid>
-      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
- In the past few years, the popularity and adoption of containers has skyrocketed, and the Kubernetes container orchestration platform has been largely adopted as well. With these changes, a new set of challenges has emerged when dealing with applications deployed on Kubernetes clusters in the real world.</description>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.&#xA;In the past few years, the popularity and adoption of containers has skyrocketed, and the Kubernetes container orchestration platform has been largely adopted as well. With these changes, a new set of challenges has emerged when dealing with applications deployed on Kubernetes clusters in the real world.</description>
     </item>
-    
   </channel>
 </rss>

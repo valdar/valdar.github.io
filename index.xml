@@ -4,44 +4,38 @@
     <title>Valdar&#39;s Blog</title>
     <link>https://blog.valdar.it/</link>
     <description>Recent content on Valdar&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 26 Nov 2019 22:56:53 +0100</lastBuildDate>
-    
-	<atom:link href="https://blog.valdar.it/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 24 Aug 2023 22:56:53 +0100</lastBuildDate>
+    <atom:link href="https://blog.valdar.it/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Skupper.io: let your services communicate across Kubernetes clusters</title>
+      <title>How to leverage AI to generate Apache Camel routes </title>
+      <link>https://blog.valdar.it/2023/08/camel-and-ai/</link>
+      <pubDate>Thu, 24 Aug 2023 22:56:53 +0100</pubDate>
+      <guid>https://blog.valdar.it/2023/08/camel-and-ai/</guid>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.&#xA;In recent years, the integration of artificial intelligence (AI) in various fields has sparked new possibilities and advancements. One intriguing application of AI lies in generating domain-specific language (DSL) documents. DSLs are designed to address specific domains or problem spaces (such as enterprise integration), allowing developers to express solutions in a more natural way, removing the cognitive complexity related to boilerplate code.</description>
+    </item>
+    <item>
+      <title>Skupper.io: communication across Kubernetes clusters</title>
       <link>https://blog.valdar.it/2019/11/skupperio-local-service-exporter/</link>
       <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
-      
       <guid>https://blog.valdar.it/2019/11/skupperio-local-service-exporter/</guid>
-      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
- In the past few years, the popularity and adoption of containers has skyrocketed, and the Kubernetes container orchestration platform has been largely adopted as well. With these changes, a new set of challenges has emerged when dealing with applications deployed on Kubernetes clusters in the real world.</description>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.&#xA;In the past few years, the popularity and adoption of containers has skyrocketed, and the Kubernetes container orchestration platform has been largely adopted as well. With these changes, a new set of challenges has emerged when dealing with applications deployed on Kubernetes clusters in the real world.</description>
     </item>
-    
     <item>
       <title>Use Groovy to customize the Maven build process</title>
       <link>https://blog.valdar.it/2018/10/groovy-customize-maven/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
-      
       <guid>https://blog.valdar.it/2018/10/groovy-customize-maven/</guid>
-      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
- Apache Maven is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a pom.xml file to centrally manage a project&#39;s build and its dependencies. If you have worked anywhere near to the Java ecosystem chances are that, for the good or for the bad, you have come across the use of this tool.</description>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.&#xA;Apache Maven is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a pom.xml file to centrally manage a project&amp;rsquo;s build and its dependencies. If you have worked anywhere near to the Java ecosystem chances are that, for the good or for the bad, you have come across the use of this tool.</description>
     </item>
-    
     <item>
       <title>About</title>
       <link>https://blog.valdar.it/about/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.valdar.it/about/</guid>
-      <description>Andrea Tarocchi (a.k.a. Valdar) is an open source enthusiast since 2000, computer passionate since 8 years old (C64 and LOGO anyone?).
-After his graduation won a research grant on Application Integration, he worked in Healthcare industry, mostly solving integration problems with Apache camel, then moved to Red Hat through a number of roles: currently a Senior Software Engineer.
-Been lucky to work with and contribute to some great open source project, like Apache Camel and Drools to mention a few.</description>
+      <description>Andrea Tarocchi (a.k.a. Valdar) is an open source enthusiast since 2000, computer passionate since 8 years old (C64 and LOGO anyone?).&#xA;After his graduation won a research grant on Application Integration, he worked in Healthcare industry, mostly solving integration problems with Apache camel, then moved to Red Hat through a number of roles: currently a Senior Software Engineer.&#xA;Been lucky to work with and contribute to some great open source project, like Apache Camel and Drools to mention a few.</description>
     </item>
-    
   </channel>
 </rss>

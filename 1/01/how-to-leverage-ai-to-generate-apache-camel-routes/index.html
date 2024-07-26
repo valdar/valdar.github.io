@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:1313/1/01/how-to-leverage-ai-to-generate-apache-camel-routes/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.129.0">
+
+    
+    
+    
+
+<title>How to leverage AI to generate Apache Camel routes  • Valdar&#39;s Blog</title>
+<meta name="description" content="valdar&#39;s blog :: my own thoughts, opinions and rants on technology.">
+<meta name="keywords" content="blog,java,groovy,golang,javascript,shell,thoughts,apache,camel,apache camel">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How to leverage AI to generate Apache Camel routes ">
+  <meta name="twitter:description" content="This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
+In recent years, the integration of artificial intelligence (AI) in various fields has sparked new possibilities and advancements. One intriguing application of AI lies in generating domain-specific language (DSL) documents. DSLs are designed to address specific domains or problem spaces (such as enterprise integration), allowing developers to express solutions in a more natural way, removing the cognitive complexity related to boilerplate code.">
+      <meta name="twitter:site" content="@valdar">
+
+<meta property="og:url" content="http://localhost:1313/1/01/how-to-leverage-ai-to-generate-apache-camel-routes/">
+  <meta property="og:site_name" content="Valdar&#39;s Blog">
+  <meta property="og:title" content="How to leverage AI to generate Apache Camel routes ">
+  <meta property="og:description" content="This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
+In recent years, the integration of artificial intelligence (AI) in various fields has sparked new possibilities and advancements. One intriguing application of AI lies in generating domain-specific language (DSL) documents. DSLs are designed to address specific domains or problem spaces (such as enterprise integration), allowing developers to express solutions in a more natural way, removing the cognitive complexity related to boilerplate code.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atelier-cave-dark.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:1313/">
+        
+          Valdar&#39;s Blog
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://localhost:1313/img/me.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         my own thoughts, opinions and rants on technology. 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Valdar&#39;s Blog</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/valdar" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/valdar" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://bitbucket.org/valdar9" rel="me"><i class="fab fa-bitbucket fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://gitlab.com/valdar" rel="me"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://linkedin.com/in/andreatarocchi" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://stackoverflow.com/users/5559361" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	&nbsp;<a href="https://about.me/andrea.tarocchi"><i class="fas fa-address-card fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>How to leverage AI to generate Apache Camel routes </h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <blockquote>
+    <p>This post was originally published on <a href="https://developers.redhat.com/blog">Red Hat Developers</a>, the community to learn, code, and share faster. To read the original post, <a href="https://developers.redhat.com/articles/2023/08/24/how-leverage-ai-generate-apache-camel-routes#">click here</a>.</p>
+</blockquote>
+
+<p>In recent years, the integration of <a href="https://developers.redhat.com/topics/ai-ml">artificial intelligence (AI)</a> in various fields has sparked new possibilities and advancements. One intriguing application of AI lies in generating domain-specific language (DSL) documents. DSLs are designed to address specific domains or problem spaces (such as enterprise integration), allowing developers to express solutions in a more natural way, removing the cognitive complexity related to boilerplate code. In this article, we will delve into the idea of leveraging AI to generate Apache Camel DSL.</p>
+<h1 id="chatgpt-and-camel">ChatGPT and Camel</h1>
+<p>One of the primary areas where AI can be applied is in generating DSL code. By training AI models on existing Apache Camel DSL codebases, these models can learn the patterns, syntax, and semantic relationships unique to the language. With this knowledge, AI models can generate new DSL code snippets or even complete routes based on specific inputs or requirements.</p>
+<p>To experiment with this idea, the following prompt was fed to ChatGPT:</p>
+<p><em>Write an Apache Camel DSL that logs a message every 5 seconds.</em></p>
+<p>The answer was as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.camel.builder.RouteBuilder;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LogRoute</span> <span style="color:#66d9ef">extends</span> RouteBuilder {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span>() <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        from(<span style="color:#e6db74">&#34;timer:myTimer?period=5000&#34;</span>)
+</span></span><span style="display:flex;"><span>           .<span style="color:#a6e22e">setBody</span>().<span style="color:#a6e22e">constant</span>(<span style="color:#e6db74">&#34;Logging a message!&#34;</span>)
+</span></span><span style="display:flex;"><span>           .<span style="color:#a6e22e">to</span>(<span style="color:#e6db74">&#34;log:myLogger&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Encouraged by the result, I tried something more complex, a basic real world question you sometimes come across on mailing lists:</p>
+<p><em>Also write an Apache Camel DSL that transforms CVS to XML.</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CsvToXmlRoute</span> <span style="color:#66d9ef">extends</span> RouteBuilder {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span>() <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    	from(<span style="color:#e6db74">&#34;file:/inputDirectory?noop=true&#34;</span>)
+</span></span><span style="display:flex;"><span>        	.<span style="color:#a6e22e">unmarshal</span>().<span style="color:#a6e22e">csv</span>() <span style="color:#75715e">// Unmarshal CSV file into a List&lt;List&lt;String&gt;&gt;</span>
+</span></span><span style="display:flex;"><span>        	.<span style="color:#a6e22e">marshal</span>().<span style="color:#a6e22e">jaxb</span>() <span style="color:#75715e">// Marshal List&lt;List&lt;String&gt;&gt; into XML</span>
+</span></span><span style="display:flex;"><span>        	.<span style="color:#a6e22e">to</span>(<span style="color:#e6db74">&#34;file:/outputDirectory?fileName=output.xml&#34;</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Even if the answer is assuming a lot of details, it is still more or less correct. To be fair, the prompt used was quite generic (as are most questions requesting help on a given technology most of the time) and could have been improved to get more precise answers. Nevertheless, the results were so promising that I had to see if something similar could be achieved with open components running on my laptop.</p>
+<h1 id="privategpt-and-camel">PrivateGPT and Camel</h1>
+<p>The space of a self-hosted large language models (LLMs) solution is quite new and rapidly evolving with new projects almost on a daily basis. I decided to experiment with <a href="https://github.com/imartinez/privateGPT">PrivateGPT</a> despite other seemingly promising options such as <a href="https://github.com/serge-chat/serge">serge chat</a> and <a href="https://github.com/oobabooga/text-generation-webui">oobabooga text generation web UI</a>.</p>
+<p>According to its readme, PrivateGPT is configured through an .env file. First experimentations were done with the following default settings:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PERSIST_DIRECTORY<span style="color:#f92672">=</span>../db
+</span></span><span style="display:flex;"><span>MODEL_TYPE<span style="color:#f92672">=</span>GPT4All
+</span></span><span style="display:flex;"><span>MODEL_PATH<span style="color:#f92672">=</span>../models/ggml-gpt4all-j-v1.3-groovy.bin
+</span></span><span style="display:flex;"><span>EMBEDDINGS_MODEL_NAME<span style="color:#f92672">=</span>all-MiniLM-L6-v2
+</span></span><span style="display:flex;"><span>MODEL_N_CTX<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>TARGET_SOURCE_CHUNKS<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><p>With these settings the results were not that encouraging due to producing too generic answers.</p>
+<p>Fortunately, PrivateGPT makes it easy to fine-tune the training by using additional specific resources that you can provide to the model and changing it by simply changing this configuration.</p>
+<p>After some experimenting with different models and adding the Apache Camel web site and examples as additional material for training, I ended up with the following configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PERSIST_DIRECTORY<span style="color:#f92672">=</span>../db
+</span></span><span style="display:flex;"><span>MODEL_TYPE<span style="color:#f92672">=</span>LlamaCpp
+</span></span><span style="display:flex;"><span>MODEL_PATH<span style="color:#f92672">=</span>../models/WizardLM-13B-1.0.ggmlv3.q4_1.bin
+</span></span><span style="display:flex;"><span>EMBEDDINGS_MODEL_NAME<span style="color:#f92672">=</span>all-mpnet-base-v2
+</span></span><span style="display:flex;"><span>MODEL_N_CTX<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>TARGET_SOURCE_CHUNKS<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><p>Using the <a href="https://huggingface.co/TheBloke/wizardLM-13B-1.0-GGML">https://huggingface.co/TheBloke/wizardLM-13B-1.0-GGML</a> model that proved to work better at answering the following prompt:</p>
+<p>DISCLAIMER: all the LLaMA models are licensed for research use only, which prevents commercial use of this model.</p>
+<p><em>Write an Apache Camel route from timer each 5 seconds to logging.</em></p>
+<p>This led to results pretty much identical to ChatGPT:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.camel.builder.RouteBuilder;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyRouteBuilder</span> <span style="color:#66d9ef">extends</span> RouteBuilder {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span>() <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    	from(<span style="color:#e6db74">&#34;timer:foo?period=5000&#34;</span>)
+</span></span><span style="display:flex;"><span>        	.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;${body}&#34;</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The time to generate the answers on my machine that has no dedicated nvidia CUDA capable GPU, took about 1.5 minutes.</p>
+<h1 id="more-experiments-and-conclusions">More experiments and conclusions</h1>
+<p>With a more complex prompt, the quality of the answers decreased compared to ChatGPT, but there is room for improvement and experimentation with settings, training resources, and new models that come out daily (see <a href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard">open LLM leaderboard</a>)</p>
+<p>AI techniques, particularly Natural Language Processing (NLP), can also contribute to DSL document generation. NLP models can interpret natural language descriptions of desired DSL functionality, bridging the gap between non-technical stakeholders and developers. By analyzing and translating plain English descriptions into corresponding DSL code, AI can facilitate effective communication of domain requirements and simplify the development process.</p>
+<p>Another area where AI can make an impact is in the generation of DSL documentation. AI models can analyze existing Apache Camel DSL documentation, such as official guides, user manuals, and community discussions. By understanding the structure and content of these documents, AI models can generate new and relevant documentation for DSL elements, options, and usage patterns. This automation can improve the availability and quality of documentation, benefiting both developers and end-users.</p>
+<p>Similarly AI can be used to generate unit tests and usage examples, given an Apache Camel route.</p>
+<p>Theoretically, AI techniques can be leveraged to perform DSL optimization and refactoring. AI models can analyze large code repositories, identifying performance bottlenecks, suggesting alternative constructs or components, and proposing architectural changes. By assisting developers in writing more efficient and maintainable DSL code, AI streamlines the development process and enhances the overall quality of DSL applications.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    
+    <a href="/2018/10/groovy-customize-maven/" class="navigation-next">
+      <span class="navigation-tittle">Use Groovy to customize the Maven build process</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+
+
+
+  
+    
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+
+    (function () {
+    if (location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1" ||
+      location.hostname === "") {
+      return;
+    }
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    var disqus_shortname = 'valdar';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || 
+      document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the
+  <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by
+  <span class="logo-disqus">Disqus</span>
+</a>
+
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

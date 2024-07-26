@@ -4,76 +4,87 @@
     <title>Tags on Valdar&#39;s Blog</title>
     <link>https://blog.valdar.it/tags/</link>
     <description>Recent content in Tags on Valdar&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 26 Nov 2019 22:56:53 +0100</lastBuildDate>
-    
-	<atom:link href="https://blog.valdar.it/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 24 Aug 2023 22:56:53 +0100</lastBuildDate>
+    <atom:link href="https://blog.valdar.it/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>cloud</title>
+      <title>AI</title>
+      <link>https://blog.valdar.it/tags/ai/</link>
+      <pubDate>Thu, 24 Aug 2023 22:56:53 +0100</pubDate>
+      <guid>https://blog.valdar.it/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI/ML</title>
+      <link>https://blog.valdar.it/tags/ai/ml/</link>
+      <pubDate>Thu, 24 Aug 2023 22:56:53 +0100</pubDate>
+      <guid>https://blog.valdar.it/tags/ai/ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Apache-Camel</title>
+      <link>https://blog.valdar.it/tags/apache-camel/</link>
+      <pubDate>Thu, 24 Aug 2023 22:56:53 +0100</pubDate>
+      <guid>https://blog.valdar.it/tags/apache-camel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Camel</title>
+      <link>https://blog.valdar.it/tags/camel/</link>
+      <pubDate>Thu, 24 Aug 2023 22:56:53 +0100</pubDate>
+      <guid>https://blog.valdar.it/tags/camel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud</title>
       <link>https://blog.valdar.it/tags/cloud/</link>
       <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
-      
       <guid>https://blog.valdar.it/tags/cloud/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>kubernetes</title>
+      <title>Kubernetes</title>
       <link>https://blog.valdar.it/tags/kubernetes/</link>
       <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
-      
       <guid>https://blog.valdar.it/tags/kubernetes/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>openshift</title>
+      <title>Openshift</title>
       <link>https://blog.valdar.it/tags/openshift/</link>
       <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
-      
       <guid>https://blog.valdar.it/tags/openshift/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>skupper.io</title>
+      <title>Skupper.io</title>
       <link>https://blog.valdar.it/tags/skupper.io/</link>
       <pubDate>Tue, 26 Nov 2019 22:56:53 +0100</pubDate>
-      
       <guid>https://blog.valdar.it/tags/skupper.io/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>groovy</title>
+      <title>Groovy</title>
       <link>https://blog.valdar.it/tags/groovy/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
-      
       <guid>https://blog.valdar.it/tags/groovy/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>maven</title>
+      <title>Maven</title>
       <link>https://blog.valdar.it/tags/maven/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
-      
       <guid>https://blog.valdar.it/tags/maven/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>syndesis</title>
+      <title>Syndesis</title>
       <link>https://blog.valdar.it/tags/syndesis/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
-      
       <guid>https://blog.valdar.it/tags/syndesis/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

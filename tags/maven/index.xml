@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>maven on Valdar&#39;s Blog</title>
+    <title>Maven on Valdar&#39;s Blog</title>
     <link>https://blog.valdar.it/tags/maven/</link>
-    <description>Recent content in maven on Valdar&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Maven on Valdar&#39;s Blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 11 Oct 2018 12:08:20 +0200</lastBuildDate>
-    
-	<atom:link href="https://blog.valdar.it/tags/maven/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://blog.valdar.it/tags/maven/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use Groovy to customize the Maven build process</title>
       <link>https://blog.valdar.it/2018/10/groovy-customize-maven/</link>
       <pubDate>Thu, 11 Oct 2018 12:08:20 +0200</pubDate>
-      
       <guid>https://blog.valdar.it/2018/10/groovy-customize-maven/</guid>
-      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.
- Apache Maven is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a pom.xml file to centrally manage a project&#39;s build and its dependencies. If you have worked anywhere near to the Java ecosystem chances are that, for the good or for the bad, you have come across the use of this tool.</description>
+      <description>This post was originally published on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click here.&#xA;Apache Maven is a popular build automation tool used primarily for Java projects (although it can also be used to build and manage projects written in other languages). Maven uses a pom.xml file to centrally manage a project&amp;rsquo;s build and its dependencies. If you have worked anywhere near to the Java ecosystem chances are that, for the good or for the bad, you have come across the use of this tool.</description>
     </item>
-    
   </channel>
 </rss>
